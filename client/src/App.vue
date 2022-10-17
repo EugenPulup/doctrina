@@ -1,19 +1,10 @@
 <template>
-  <DefaultLayout>
-    <HelloWorld />
-  </DefaultLayout>
+  <router-view />
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue';
-import DefaultLayout from './layouts/default.layout.vue';
-
 export default {
   name: 'App',
-  components: {
-    HelloWorld,
-    DefaultLayout,
-  },
 };
 </script>
 

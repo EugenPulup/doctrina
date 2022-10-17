@@ -593,10 +593,7 @@
 
 <script>
 export default {
-  name: 'HelloWorld',
-  props: {
-    msg: String,
-  },
+  name: 'WelcomeComponent',
 };
 
 window.addEventListener('resize', () => {
