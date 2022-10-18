@@ -1,5 +1,5 @@
 <template>
-  <div class="container min-w-full min-h-full">
+  <div data-theme="cyberpunk" class="container min-w-full min-h-full">
     <BaseHeader></BaseHeader>
     <div class="flex flex-col min-h-screen justify-center">
       <slot></slot>
