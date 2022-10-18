@@ -1,5 +1,6 @@
 import { createWebHistory, createRouter } from 'vue-router';
 import Home from '../pages/Home/index.vue';
+import Auth from '../pages/Auth/index.vue';
 import NotFound from '../pages/NotFound/index.vue';
 
 const routes = [
@@ -7,6 +8,11 @@ const routes = [
     path: '/',
     name: 'Home',
     component: Home,
+  },
+  {
+    path: '/login',
+    name: 'Auth',
+    component: Auth,
   },
   {
     path: '/:catchAll(.*)',

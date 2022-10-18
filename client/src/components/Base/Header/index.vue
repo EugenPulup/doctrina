@@ -5,7 +5,7 @@
   >
     <div class="navbar bg-base-100">
       <div class="flex-1">
-        <a class="btn btn-ghost normal-case text-xl">daisyUI</a>
+        <a class="btn btn-ghost normal-case text-xl">doctrina</a>
       </div>
       <div class="flex-none gap-2">
         <div class="form-control">
