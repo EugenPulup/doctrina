@@ -1,6 +1,9 @@
 <template>
-  <header aria-label="Page Header" class="bg-gray-50 sticky top-0 z-50">
-    <div class="mx-auto max-w-screen px-8 py-8">
+  <header
+    aria-label="Page Header"
+    class="bg-gray-50 sticky top-0 z-50 bg-opacity-25 backdrop-filter backdrop-blur-lg"
+  >
+    <div class="mx-auto max-w-screen px-8 py-4">
       <div class="flex items-center sm:justify-between sm:gap-4">
         <div class="relative hidden sm:block">
           <label class="sr-only" for="search"> Search </label>
