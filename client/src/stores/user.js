@@ -16,6 +16,7 @@ export const useUserStore = defineStore({
   id: 'user',
   state: () => ({
     name: 'Eduardo',
+    loggedIn: false,
     isAdmin: true,
   }),
 
@@ -41,6 +42,12 @@ export const useUserStore = defineStore({
         name: user,
         ...userData,
       });
+    },
+  },
+
+  getters: {
+    isLogged() {
+      return this.loggedIn;
     },
   },
 });

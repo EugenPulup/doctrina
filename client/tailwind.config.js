@@ -39,7 +39,15 @@ module.exports = {
         'winter',
       ],
     },
-    extend: {},
+    extend: {
+      transitionProperty: {
+        width: 'width',
+      },
+    },
   },
-  plugins: [require('tailwindcss-filters'), require('daisyui')],
+  plugins: [
+    require('tailwindcss-filters'),
+    require('daisyui'),
+    require('@tailwindcss/line-clamp'),
+  ],
 };

@@ -131,12 +131,7 @@ export default {
   methods: {
     switchStep(stepId) {
       this.currentStep = stepId;
-      //   if (stepId > 1) {
-      // this.steps[stepId - 2].status = 'step-info';
-      // this.steps[stepId - 1].status = 'step-info step-error';
-      //   }
 
-      //   if (stepId < this.currentStep) {
       this.steps = this.steps.map((step) => {
         if (step.id < stepId) {
           step.status = 'step-info';
@@ -150,7 +145,6 @@ export default {
         }
         return step;
       });
-      //   }
     },
   },
 };
