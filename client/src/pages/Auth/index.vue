@@ -20,7 +20,7 @@
 </template>
 
 <script>
-import LoginForm from '../../components/Forms/Login/index.vue';
+import LoginForm from '../../components/Forms/Login/LoginForm.vue';
 import SignUpForm from '../../components/Forms/SignUp/index.vue';
 import DefaultLayout from '../../layouts/default.layout.vue';
 

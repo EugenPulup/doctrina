@@ -11,14 +11,15 @@
       </div>
 
       <div class="flex-2 gap-2 w-5/6 justify-end">
-        <button
+        <router-link
+          :to="{ name: 'Create' }"
           class="btn btn-secondary group transition-all duration-300 ease-in-out w-36 hover:w-64"
         >
           <span class="hidden group-hover:inline-flex">
             Create Your&nbsp;
           </span>
           <span> Dockerfile </span>
-        </button>
+        </router-link>
         <router-link :to="{ name: 'Hub' }">
           <a
             class="btn btn-accent group normal-case transition-all duration-300 ease-in-out w-16 hover:w-36"
