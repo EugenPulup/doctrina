@@ -7,146 +7,44 @@
       :validation-schema="schema"
       @submit="onSubmit"
     >
-      <div
-        class="card group basis-1/3 flex flex-row bg-base-100 shadow-xl w-full h-full"
-      >
-        <figure class="pl-8">
-          <img class="mask w-36 h-36 mask-squircle bg-gray-300" />
-        </figure>
+      <GeneralOptions></GeneralOptions>
 
-        <div class="card-body w-3/6 justify-center">
-          <div class="form-control">
-            <label class="input-group input-group-vertical">
-              <span>Title</span>
-              <Field
-                name="title"
-                placeholder="title"
-                class="input input-bordered"
-              />
-            </label>
-            <ErrorMessage name="title" class="bg-error" />
-          </div>
+      <DockerfileOptions @language="getLanguage"></DockerfileOptions>
 
-          <div class="form-control">
-            <label class="input-group input-group-vertical">
-              <span>Title</span>
-              <Field
-                name="title"
-                placeholder="title"
-                class="input input-bordered"
-              />
-            </label>
-            <ErrorMessage name="title" class="bg-error" />
-          </div>
-        </div>
-        <div class="card-body w-3/6 justify-center">
-          <div class="form-control h-full">
-            <label class="input-group input-group-vertical h-full">
-              <span>Description</span>
-              <Field
-                name="description"
-                placeholder="Description"
-                class="textarea textarea-bordered h-full"
-              />
-            </label>
-            <ErrorMessage name="description" class="bg-error" />
-          </div>
-        </div>
-      </div>
-      <div
-        class="card group basis-1/3 flex flex-row bg-base-100 shadow-xl w-full h-full"
-      >
-        <div class="card-body w-3/6 justify-center">
-          <div class="form-control">
-            <label class="input-group input-group-vertical">
-              <span>Title</span>
-              <Field
-                name="title"
-                placeholder="title"
-                class="input input-bordered"
-              />
-            </label>
-            <ErrorMessage name="title" class="bg-error" />
-          </div>
-          <div class="form-control">
-            <label class="input-group input-group-vertical">
-              <span>Title</span>
-              <Field
-                name="title"
-                placeholder="title"
-                class="input input-bordered"
-              />
-            </label>
-            <ErrorMessage name="title" class="bg-error" />
-          </div>
-          <div class="form-control">
-            <label class="input-group input-group-vertical">
-              <span>Title</span>
-              <Field
-                name="title"
-                placeholder="title"
-                class="input input-bordered"
-              />
-            </label>
-            <ErrorMessage name="title" class="bg-error" />
-          </div>
-        </div>
-      </div>
-      <div
-        class="card group basis-1/3 flex flex-row bg-base-100 shadow-xl w-full h-full"
-      >
-        <div class="card-body w-3/6 justify-center">
-          <div class="form-control">
-            <label class="input-group input-group-vertical">
-              <span>Title</span>
-              <Field
-                name="title"
-                placeholder="title"
-                class="input input-bordered"
-              />
-            </label>
-            <ErrorMessage name="title" class="bg-error" />
-          </div>
-          <div class="form-control">
-            <label class="input-group input-group-vertical">
-              <span>Title</span>
-              <Field
-                name="title"
-                placeholder="title"
-                class="input input-bordered"
-              />
-            </label>
-            <ErrorMessage name="title" class="bg-error" />
-          </div>
-          <div class="form-control">
-            <label class="input-group input-group-vertical">
-              <span>Title</span>
-              <Field
-                name="title"
-                placeholder="title"
-                class="input input-bordered"
-              />
-            </label>
-            <ErrorMessage name="title" class="bg-error" />
-          </div>
-        </div>
-      </div>
+      <PhpOptions
+        v-if="generateFormStore.$state.language == 'PHP'"
+      ></PhpOptions>
+
+      <NodeOptions
+        v-if="generateFormStore.$state.language == 'Node'"
+      ></NodeOptions>
+
+      <button class="btn btn-wide btn-accent btn-disabled">Generate</button>
     </Form>
   </div>
 </template>
 
 <script setup>
-import { Field, Form, ErrorMessage } from 'vee-validate';
+import { Form } from 'vee-validate';
 import { inject } from 'vue';
 import { useNotificationStore } from '../../../stores/notification';
-import { object, string } from 'yup';
+import { useGenerateFormState } from '../../../stores/createFrom';
+import { object, string, number } from 'yup';
+
+import GeneralOptions from './Options/GeneralOptions';
+import DockerfileOptions from './Options/DockerfileOptions';
+import PhpOptions from './Options/PhpOptions';
+import NodeOptions from './Options/NodeOptions';
 
 const api = inject('api');
 const notificationStore = useNotificationStore();
+const generateFormStore = useGenerateFormState();
 
 const schema = object({
-  title: string().required().trim(),
-  description: string().required().max(255),
+  language: string().required(),
+  basePort: number().required(),
+  sourcePath: string().required(),
+  workdir: string().required(),
 });
 
 async function onSubmit(values) {

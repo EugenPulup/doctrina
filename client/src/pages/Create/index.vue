@@ -1,5 +1,5 @@
 <template>
-  <DefaultLayout>
+  <DefaultLayout class="bg-base-200">
     <CreateForm />
   </DefaultLayout>
 </template>
